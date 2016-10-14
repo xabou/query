@@ -45,19 +45,11 @@ abstract class BaseQuery
      */
     public static function get()
     {
-        $builder = (new static)->body();
+        $builder = call_user_func_array([new static, 'body'], func_get_args());
         if ($builder instanceof Builder) {
             return $builder->get();
         }
 
         return $builder;
     }
-
-    /**
-     * Declare the body of this query
-     *
-     * @return mixed
-     *
-     */
-    abstract public static function body();
 }

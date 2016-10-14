@@ -58,8 +58,16 @@ public static function body()
 }
 ```
 
-### Fetch Results
+### Fetching Results
 
+#### Body 
+This is where your query logic should be declared.
+This method returns an instance of Eloquent Database Builder or executed query.
+
+#### Get 
+This is a wrapper for body method. When body returns an instance of Eloquent Database Builder
+this method delegates to Builder's get method.
+  
 #### 1: Delegate to Eloquent Database Builder
 
 You can call any method defined in Eloquent Database Builder by returning an instance of it, like above example.
@@ -73,7 +81,7 @@ PopularUsersQuery::first()
 PopularUsersQuery::get()
 
 // Dynamic method calls
-new PopularUsersQuery()->get()
+(new PopularUsersQuery())->get()
 
 ```
 
@@ -89,14 +97,17 @@ public static function body()
                  ->where('user.verified', 1)
                  ->with('avatar')
                  ->orderBy('popularity_user.score', 'DESC')
-                 ->first();
+                 ->paginate();
 }
 
 ```
 
-Then simply call get method on Query.
+Then simply call body or get method on Query.
 
 ```php
+PopularUsersQuery::body()
+
+//or
 
 PopularUsersQuery::get()
 ```
@@ -110,4 +121,22 @@ By returning the content of body you can continue chaining methods on Eloquent D
 ```php
 
 PopularUsersQuery::body()->where('age', '>', 25)->get();
+```
+
+### Passing Arguments
+
+You can pass as many arguments as you want through body or get methods.
+
+```php
+
+$age = 25;
+$verified = 1 
+PopularUsersQuery::get($age, $verified);
+
+public static function body($age, $verified)
+{
+    return User::where('age', '>', $age)
+                 ->where('verified', $verified);
+}
+
 ```
