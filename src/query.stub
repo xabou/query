@@ -1,0 +1,20 @@
+<?php
+
+namespace DummyNamespace;
+
+use Xabou\Query\BaseQuery as Query;
+
+class DummyClass extends Query
+{
+    /**
+     * Declare the body of this query
+     *
+     * @return mixed
+     *
+     */
+    public static function body()
+    {
+
+    }
+
+}
