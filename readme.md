@@ -17,7 +17,7 @@ Alternatively, you can put the following in your composer.json file:
 ```
 {
     "require": {
-        "xabou/query": "~2.1"
+        "xabou/query": "^0.5.0"
     }
 }
 ```
@@ -49,9 +49,8 @@ Within the body method you can declare your query:
 ```php
 public static function body()
 {
-    return User::select(['user.username', 'user.id', 'user.banned', 'user.verified', 'popularity_user.score'])
+    return User::select(['user.username', 'user.id', 'user.verified', 'popularity_user.score'])
                  ->join('popularity_user', 'users.id', '=', 'popularity_user.user_id')
-                 ->where('user.banned', 0)
                  ->where('user.verified', 1)
                  ->with('avatar')
                  ->orderBy('popularity_user.score', 'DESC')
