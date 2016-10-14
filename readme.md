@@ -60,7 +60,7 @@ public static function body()
 
 ### Fetch Results
 
-## 1: Delegate to Eloquent Database Builder
+#### 1: Delegate to Eloquent Database Builder
 
 You can call any method defined in Eloquent Database Builder by returning an instance of it, like above example.
 
@@ -77,7 +77,7 @@ new PopularUsersQuery()->get()
 
 ```
 
-## 2: Execute query
+#### 2: Execute query
 
 Within the body method you can also execute your query.
 
@@ -103,7 +103,7 @@ PopularUsersQuery::get()
 
 **Note:** In this case get method serves as an alias to body method. It won't delegate to Eloquent Database Builder.
 
-## 2: Chain query
+#### 3: Chain query
 
 By returning the content of body you can continue chaining methods on Eloquent Database Builder.
 
