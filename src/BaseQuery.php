@@ -3,7 +3,8 @@
 namespace Xabou\Query;
 
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 
 abstract class BaseQuery
 {
@@ -46,7 +47,7 @@ abstract class BaseQuery
     public static function get()
     {
         $builder = call_user_func_array([new static, 'body'], func_get_args());
-        if ($builder instanceof Builder) {
+        if ($builder instanceof EloquentBuilder || $builder instanceof QueryBuilder) {
             return $builder->get();
         }
 
