@@ -1,7 +1,7 @@
 # Abandoned
 
 All good things come to an end. 
-Thanks everyone for utilizing this package :)  
+Thanks everyone for using this package :)  
 
 # Laravel Query
 
