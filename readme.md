@@ -1,3 +1,8 @@
+# Abandoned
+
+All good things come to an end. 
+Thanks everyone for utilizing this package :)  
+
 # Laravel Query
 
 Query is a package that provides queries objects for your Laravel application.
